@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -19,7 +19,7 @@
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background-color 0.3s #C4C4C4;
+  transition: background-color 0.3s #c4c4c4;
 }
 
 .navLink:hover {
@@ -27,6 +27,7 @@
 }
 
 .navLink.active {
+  background-color: #007bff;
   font-weight: 600;
   color: #007bff;
 }

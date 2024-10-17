@@ -3,7 +3,10 @@ import data from "../../data/users";
 import { useState } from "react";
 
 const EditUserForm = () => {
-  const [users, setUsers] = useState(data);
+  const [users, setUsers] = useState(() => {
+    const savedUsers = JSON.parse(localStorage.getItem("users"));
+    return savedUsers && savedUsers.length > 0 ? savedUsers : data;
+  });
   const [selectedUser, setSelectedUser] = useState(users[0]);
 
   const handleUserChange = (event) => {

@@ -6,32 +6,10 @@ import UsersForm from "../../components/UsersForm/UsersForm";
 import css from "./Users.module.css";
 import { useState } from "react";
 
-const initialUsers = [
-  {
-    id: 1,
-    fullName: "Andrey Olishchuk",
-    department: "Digital marketing",
-    country: "Ukraine",
-    status: "Active",
-  },
-  {
-    id: 2,
-    fullName: "Andrey Olishchuk",
-    department: "Digital marketing",
-    country: "Ukraine",
-    status: "Active",
-  },
-  {
-    id: 3,
-    fullName: "Andrey Olishchuk",
-    department: "Digital marketing",
-    country: "Ukraine",
-    status: "Active",
-  },
-];
+import data  from "../../data/users";
 
 const Users = () => {
-  const [users, setUsers] = useState(initialUsers);
+  const [users, setUsers] = useState(data);
   const [selectedDepartments, setSelectedDepartments] = useState([]);
   const [country, setCountry] = useState("");
   const [status, setStatus] = useState("");

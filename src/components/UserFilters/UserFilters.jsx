@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import css from "./UserFilters.module.css";
 import {
   Box,
   FormControl,
@@ -7,6 +8,7 @@ import {
   Select,
   Button,
 } from "@mui/material";
+import AddUserForm from "../AddUserForm/AddUserForm";
 
 const UserFilters = ({
   selectedDepartments,
@@ -16,8 +18,20 @@ const UserFilters = ({
   status,
   setStatus,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleSelectDepartment = (event) => {
     setSelectedDepartments(event.target.value);
+  };
+
+  const handleClickOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -48,7 +62,15 @@ const UserFilters = ({
         </Select>
       </FormControl>
 
-      <Button variant="contained">Add User</Button>
+      <Button variant="contained" onClick={handleClickOpen}>
+        Add User
+      </Button>
+
+      {isOpen && (
+        <div className={css.modalOverlay} onClick={handleBackdropClick}>
+          <AddUserForm />
+        </div>
+      )}
     </Box>
   );
 };

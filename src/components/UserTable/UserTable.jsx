@@ -26,10 +26,10 @@ const UserTable = ({ users, handleDeleteUser }) => {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
-              <TableCell>{user.fullName}</TableCell>
-              <TableCell>{user.department}</TableCell>
-              <TableCell>{user.country}</TableCell>
-              <TableCell>{user.status}</TableCell>
+              <TableCell>{user.name}</TableCell>
+              <TableCell>{user.department.name}</TableCell>
+              <TableCell>{user.country.name}</TableCell>
+              <TableCell>{user.status.name}</TableCell>
               <TableCell>
                 <IconButton onClick={() => handleDeleteUser(user.id)}>
                   <DeleteIcon />

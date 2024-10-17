@@ -6,7 +6,7 @@ import UsersForm from "../../components/UsersForm/UsersForm";
 import css from "./Users.module.css";
 import { useState } from "react";
 
-import data  from "../../data/users";
+import data from "../../data/users";
 
 const Users = () => {
   const [users, setUsers] = useState(data);
@@ -17,6 +17,8 @@ const Users = () => {
   const handleDeleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
+
+
   return (
     <div className={css.page}>
       <h1></h1>

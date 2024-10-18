@@ -1,5 +1,5 @@
-import { nanoid } from 'nanoid'
-import React, { useState } from "react";
+import { nanoid } from "nanoid";
+import React, { useState, useEffect } from "react";
 import css from "./UserFilters.module.css";
 import {
   Box,
@@ -23,6 +23,17 @@ const UserFilters = ({
   setStatus,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [filtersDisabled, setFiltersDisabled] = useState(true); 
+
+  useEffect(() => {
+    if (selectedDepartments.length >= 3) {
+      setFiltersDisabled(false); 
+    } else {
+      setFiltersDisabled(true); 
+      setCountry("");
+      setStatus("");
+    }
+  }, [selectedDepartments]);
 
   const handleSelectDepartment = (event) => {
     setSelectedDepartments(event.target.value);
@@ -55,7 +66,7 @@ const UserFilters = ({
         </Select>
       </FormControl>
 
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={filtersDisabled}>
         <InputLabel>Country</InputLabel>
         <Select value={country} onChange={(e) => setCountry(e.target.value)}>
           {countries.map((country) => (
@@ -66,7 +77,7 @@ const UserFilters = ({
         </Select>
       </FormControl>
 
-      <FormControl fullWidth>
+      <FormControl fullWidth disabled={filtersDisabled}>
         <InputLabel>Status</InputLabel>
         <Select value={status} onChange={(e) => setStatus(e.target.value)}>
           {statuses.map((status) => (

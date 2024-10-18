@@ -10,3 +10,5 @@ const departments = [
   { name: "Legal", value: "LEG" },
   { name: "Product Management", value: "PM" },
 ];
+
+export default departments;

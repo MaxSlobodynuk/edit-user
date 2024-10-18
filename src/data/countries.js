@@ -10,3 +10,5 @@ const countries = [
   { name: "China", value: "CN" },
   { name: "India", value: "IN" },
 ];
+
+export default countries;

@@ -41,7 +41,7 @@ const EditUserForm = () => {
               id="fullName"
               type="text"
               className={css.input}
-              defaultValue={selectedUser.name} // Відображаємо ім'я вибраного користувача
+              defaultValue={selectedUser.name} 
             />
           </div>
           <div className={css.formGroup}>

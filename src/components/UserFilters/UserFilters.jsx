@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid'
 import React, { useState } from "react";
 import css from "./UserFilters.module.css";
 import {
@@ -9,6 +10,9 @@ import {
   Button,
 } from "@mui/material";
 import AddUserForm from "../AddUserForm/AddUserForm";
+import departments from "../../data/departments";
+import statuses from "../../data/statuses";
+import countries from "../../data/countries";
 
 const UserFilters = ({
   selectedDepartments,
@@ -43,22 +47,33 @@ const UserFilters = ({
           value={selectedDepartments}
           onChange={handleSelectDepartment}
         >
-          <MenuItem value="Digital marketing">Digital marketing</MenuItem>
+          {departments.map((department) => (
+            <MenuItem key={nanoid()} value={department.value}>
+              {department.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
       <FormControl fullWidth>
         <InputLabel>Country</InputLabel>
         <Select value={country} onChange={(e) => setCountry(e.target.value)}>
-          <MenuItem value="Ukraine">Ukraine</MenuItem>
+          {countries.map((country) => (
+            <MenuItem key={nanoid()} value={country.value}>
+              {country.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
       <FormControl fullWidth>
         <InputLabel>Status</InputLabel>
         <Select value={status} onChange={(e) => setStatus(e.target.value)}>
-          <MenuItem value="Active">Active</MenuItem>
-          <MenuItem value="Inactive">Inactive</MenuItem>
+          {statuses.map((status) => (
+            <MenuItem key={nanoid()} value={status.value}>
+              {status.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
 
@@ -68,7 +83,11 @@ const UserFilters = ({
 
       {isOpen && (
         <div className={css.modalOverlay} onClick={handleBackdropClick}>
-          <AddUserForm />
+          <AddUserForm
+            departments={departments}
+            statuses={statuses}
+            countries={countries}
+          />
         </div>
       )}
     </Box>

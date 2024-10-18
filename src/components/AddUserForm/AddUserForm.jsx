@@ -1,6 +1,7 @@
+import { nanoid } from 'nanoid'
 import css from "./AddUserForm.module.css";
 
-const AddUserForm = () => {
+const AddUserForm = ({ departments, statuses, countries }) => {
   return (
     <div className={css.formContainer}>
       <h2 className={css.formTitle}>ADD USER</h2>
@@ -22,8 +23,11 @@ const AddUserForm = () => {
               Department
             </label>
             <select id="department" className={css.select}>
-              <option value="">Select department</option>
-              {/* Додайте варіанти відділів */}
+              {departments.map((department) => (
+                <option key={nanoid()} value={department.value}>
+                  {department.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className={css.formGroup}>
@@ -31,8 +35,11 @@ const AddUserForm = () => {
               Country
             </label>
             <select id="country" className={css.select}>
-              <option value="">Select country</option>
-              {/* Додайте варіанти країн */}
+              {countries.map((country) => (
+                <option key={nanoid()} value={country.value}>
+                  {country.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className={css.formGroup}>
@@ -40,16 +47,17 @@ const AddUserForm = () => {
               Status
             </label>
             <select id="status" className={css.select}>
-              <option value="">Select status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              {statuses.map((status) => (
+                <option key={nanoid()} value={status.value}>
+                  {status.name}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <div className={css.buttonGroup}>
           <button
             type="button"
-            // onClick={onCancel}
             className={`${css.button} ${css.secondaryButton}`}
           >
             Cancel

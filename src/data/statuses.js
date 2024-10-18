@@ -3,3 +3,5 @@ const statuses = [
   { name: "Active", value: "ACTIVE" },
   { name: "Disabled", value: "DISABLED" },
 ];
+
+export default statuses;

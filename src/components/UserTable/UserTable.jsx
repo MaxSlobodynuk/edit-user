@@ -10,7 +10,23 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const UserTable = ({ users, handleDeleteUser }) => {
+const UserTable = ({
+  users,
+  selectedDepartments,
+  country,
+  status,
+  handleDeleteUser,
+}) => {
+  const filteredUsers = users.filter((user) => {
+    const matchDepartment =
+      selectedDepartments.length === 0 ||
+      selectedDepartments.includes(user.department.value);
+    const matchCountry = !country || user.country.value === country;
+    const matchStatus = !status || user.status.value === status;
+
+    return matchDepartment && matchCountry && matchStatus;
+  });
+
   return (
     <TableContainer>
       <Table>
@@ -24,7 +40,7 @@ const UserTable = ({ users, handleDeleteUser }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <TableRow key={user.id}>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.department.name}</TableCell>

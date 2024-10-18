@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import data from "../../data/users";
 
 const Users = () => {
-  // const [users, setUsers] = useState(data);
   const [users, setUsers] = useState(() => {
     const savedUsers = JSON.parse(localStorage.getItem("users"));
     return savedUsers && savedUsers.length > 0 ? savedUsers : data;
@@ -25,7 +24,6 @@ const Users = () => {
 
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
-    // console.log(Array.isArray(localStorage.getItem("users")));
   }, [users]);
 
   return (
@@ -40,7 +38,13 @@ const Users = () => {
           status={status}
           setStatus={setStatus}
         />
-        <UserTable users={users} handleDeleteUser={handleDeleteUser} />
+        <UserTable
+          users={users}
+          selectedDepartments={selectedDepartments}
+          country={country}
+          status={status}
+          handleDeleteUser={handleDeleteUser}
+        />
       </Box>
     </div>
   );
